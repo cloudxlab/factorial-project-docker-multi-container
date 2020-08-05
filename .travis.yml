@@ -22,7 +22,7 @@ after_success:
     # Login to docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Push images to docker hub
-    #- docker push singhabhinav/factorial-project-nginx
-    #- docker push singhabhinav/factorial-project-express-server
-    #- docker push singhabhinav/factorial-project-worker
+    - docker push singhabhinav/factorial-project-nginx
+    - docker push singhabhinav/factorial-project-express-server
+    - docker push singhabhinav/factorial-project-worker
     - docker push singhabhinav/factorial-project-react-client

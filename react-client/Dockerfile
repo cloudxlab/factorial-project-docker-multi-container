@@ -4,7 +4,7 @@
 FROM node:alpine as builder
 
 # Specify WORKDIR
-WORKDIR /factorial-project
+WORKDIR '/factorial-project'
 
 # Copy the package.json from your work directory to the container's work directory
 # Until we copy the package.json file to container work directory, npm install will not work
@@ -17,7 +17,7 @@ RUN npm install
 COPY ./ ./
 
 # Startup Command
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 #### Step 2
 # Copy the build directory to Nginx directory
