@@ -7,7 +7,7 @@ services:
 # Tell Travis to build the image using Dockerfile.dev
 # We are only testing react app as only it has testcases
 before_install:
-    - docker build -t singhabhinav/react-test -f ./client/Dockerfile_dev ./client
+    - docker build -t singhabhinav/react-test -f ./react-client/Dockerfile_dev ./react-client
 
 # Tell Travis how to run test suite 
 script:
