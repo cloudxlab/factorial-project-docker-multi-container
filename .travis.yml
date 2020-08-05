@@ -1,0 +1,28 @@
+sudo: required
+
+# Tell Travis we need docker
+services:
+    - docker
+
+# Tell Travis to build the image using Dockerfile.dev
+# We are only testing react app as only it has testcases
+before_install:
+    - docker build -t singhabhinav/react-test -f ./client/Dockerfile_dev ./client
+
+# Tell Travis how to run test suite 
+script:
+    - docker run -e CI=true singhabhinav/react-test npm run test
+
+# Tell Travis to build production images
+after_success:
+    - docker build -t singhabhinav/factorial-project-react-client ./react-client
+    - docker build -t singhabhinav/factorial-project-nginx ./nginx
+    - docker build -t singhabhinav/factorial-project-express-server ./express-server
+    - docker build -t singhabhinav/factorial-project-worker ./worker
+    # Login to docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # Push images to docker hub
+    - docker push singhabhinav/factorial-project-react-client
+    - docker push singhabhinav/factorial-project-nginx
+    - docker push singhabhinav/factorial-project-express-server
+    - docker push singhabhinav/factorial-project-worker
