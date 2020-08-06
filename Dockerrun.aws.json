@@ -5,19 +5,22 @@
             "name": "react-client",
             "image": "singhabhinav/factorial-project-react-client",
             "hostname": "react-client",
-            "essential": false
+            "essential": false,
+            "memory": 100
         },
         {
             "name": "express-server",
             "image": "singhabhinav/factorial-project-express-server",
             "hostname": "express-server",
-            "essential": false
+            "essential": false,
+            "memory": 100
         },
         {
             "name": "worker",
             "image": "singhabhinav/factorial-project-worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 100
         },
         {
             "name": "nginx",
@@ -30,7 +33,8 @@
                     "containerPort": 80
                 }
              ],
-             "links": ["react-client", "express-server"]
+             "links": ["react-client", "express-server"],
+            "memory": 100
         }
     ]
 }
