@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "react-client",
+            "image": "singhabhinav/factorial-project-react-client",
+            "hostname": "react-client",
+            "essential": false
+        },
+        {
+            "name": "express-server",
+            "image": "singhabhinav/factorial-project-express-server",
+            "hostname": "express-server",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "singhabhinav/factorial-project-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "singhabhinav/factorial-project-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+             ],
+             "links": ["react-client", "express-server"]
+        }
+    ]
+}
