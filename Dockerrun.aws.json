@@ -33,7 +33,7 @@
                     "containerPort": 80
                 }
              ],
-             "links": ["react-client", "express-server"],
+            "links": ["react-client", "express-server"],
             "memory": 100
         }
     ]
